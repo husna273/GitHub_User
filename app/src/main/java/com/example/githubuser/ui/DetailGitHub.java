@@ -36,6 +36,7 @@ public class DetailGitHub extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             String username = extras.getString("User_name");
+            String nama = extras.getString("nama");
             ApiService apiService = ApiConfig.getApiService();
             Call<DetailResponse> userCall = apiService.getUserDetail(username);
 
@@ -52,9 +53,9 @@ public class DetailGitHub extends AppCompatActivity {
                         showLoading(false);
                         DetailResponse user = response.body();
                         if (user != null){
-                            name = "Name:" + user.getName();
-                            User_name = " " + user.getLogin();
-                            bio = "Bio:" + user.getBio();
+                            name = " " + user.getName();
+                            User_name = "Username :  " + user.getLogin();
+                            bio = "Bio : " + user.getBio();
                             Image = user.getAvatarUrl();
 
                             Name.setText(name);
